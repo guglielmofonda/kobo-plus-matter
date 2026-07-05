@@ -1,0 +1,13 @@
+version: 4.38.23697
+in: ../../build/firmware/4.38.23697/kobo-update-4.38.23697.zip
+out: ../../build/home-row3/KoboRoot.home-row3.tgz
+log: ../../build/home-row3/kobopatch.log
+
+patchFormat: kobopatch
+
+patches:
+  libnickel.so.1.0.0.yaml: usr/local/Kobo/libnickel.so.1.0.0
+
+overrides:
+  libnickel.so.1.0.0.yaml:
+    Remove Kobo Shop footer row on new home screen: yes

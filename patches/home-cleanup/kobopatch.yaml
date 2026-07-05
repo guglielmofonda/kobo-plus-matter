@@ -1,0 +1,19 @@
+version: 4.38.23697
+in: ../../build/firmware/4.38.23697/kobo-update-4.38.23697.zip
+out: ../../build/home-cleanup/KoboRoot.home-cleanup.tgz
+log: ../../build/home-cleanup/kobopatch.log
+
+patchFormat: kobopatch
+
+patches:
+  libnickel.so.1.0.0.yaml: usr/local/Kobo/libnickel.so.1.0.0
+  nickel.yaml: usr/local/Kobo/nickel
+
+overrides:
+  libnickel.so.1.0.0.yaml:
+    Remove recommendations from home screen: yes
+    Hide bottom home row: yes
+    Change Browse Kobo home screen link target - Activity: yes
+    Never show Kobo Plus, wishlist, and points SmartLinks: yes
+  nickel.yaml:
+    Remove footer row on new home screen: yes

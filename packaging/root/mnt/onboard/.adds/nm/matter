@@ -1,0 +1,4 @@
+menu_item:main:Matter Sync:cmd_spawn:quiet:/mnt/onboard/.adds/matter/run-sync.sh
+menu_item:main:Matter Status:cmd_output:5000:/mnt/onboard/.adds/matter/status.sh
+menu_item:main:Matter Start Auto Sync:cmd_spawn:quiet:/mnt/onboard/.adds/matter/run-daemon.sh
+menu_item:main:Matter Stop Auto Sync:cmd_output:5000:/mnt/onboard/.adds/matter/stop-daemon.sh

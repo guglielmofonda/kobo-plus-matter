@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kobo plus Matter</title>
+    <meta
+      name="description"
+      content="Sync Matter queue items to a Kobo as ordinary EPUBs while keeping Kobo's stock reader and library."
+    >
+    <meta property="og:title" content="Kobo plus Matter">
+    <meta
+      property="og:description"
+      content="Read Matter on your Kobo, without replacing Kobo."
+    >
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/site-screenshot.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Kobo plus Matter home">
+        <span class="brand-mark" aria-hidden="true">K</span>
+        <span>Kobo plus Matter</span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="https://github.com/guglielmofonda/kobo-plus-matter">GitHub</a>
+        <a href="https://github.com/guglielmofonda/kobo-plus-matter/blob/main/docs/install.md">Docs</a>
+        <a href="https://github.com/guglielmofonda/kobo-plus-matter/releases/latest">Download</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <h1 id="hero-title">Read Matter on your Kobo, without replacing Kobo</h1>
+          <p>
+            A conservative installer that turns your Matter queue into ordinary
+            EPUBs in the stock Kobo library.
+          </p>
+
+          <form
+            class="signup-form"
+            action="https://formsubmit.co/gufo0125@gmail.com"
+            method="POST"
+          >
+            <input type="hidden" name="_subject" value="Kobo plus Matter update signup">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            <label for="hero-email">Get updates</label>
+            <div class="form-row">
+              <input
+                id="hero-email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                placeholder="you@example.com"
+                required
+              >
+              <button type="submit">Get updates</button>
+            </div>
+          </form>
+
+          <div class="hero-actions" aria-label="Project links">
+            <a
+              class="secondary-link"
+              href="https://github.com/guglielmofonda/kobo-plus-matter/blob/main/docs/install.md"
+            >
+              View install docs
+            </a>
+            <a class="secondary-link" href="https://github.com/guglielmofonda/kobo-plus-matter">
+              View source
+            </a>
+          </div>
+        </div>
+
+        <div class="product-shot" aria-label="Kobo plus Matter product preview">
+          <div class="kobo-device" aria-hidden="true">
+            <div class="device-top">
+              <span>Library</span>
+              <span>Matter</span>
+            </div>
+            <div class="article-list">
+              <div>
+                <strong>Making room for slower reading</strong>
+                <span>Queued from Matter</span>
+              </div>
+              <div>
+                <strong>Design notes for a small tool</strong>
+                <span>Newsletter EPUB</span>
+              </div>
+              <div>
+                <strong>Long articles worth keeping</strong>
+                <span>Synced today</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="terminal" aria-label="Install command">
+            <div class="terminal-bar">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <pre><code>sh dist/install-to-mounted-kobo.sh
+MATTER_TOKEN=mat_your_token_here sh dist/seed-matter-token.sh
+sh dist/wait-for-kobo.sh</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <section class="workflow" aria-labelledby="workflow-title">
+        <div class="section-heading">
+          <h2 id="workflow-title">How it works</h2>
+          <p>
+            The installer keeps the reading experience boring in the right way:
+            stock Kobo, stock library, normal EPUB files.
+          </p>
+        </div>
+        <div class="steps">
+          <article>
+            <span>01</span>
+            <h3>Fetch Matter queue</h3>
+            <p>The sync client reads queued Matter articles through the public API.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Write EPUBs</h3>
+            <p>Articles become ordinary EPUB files under the visible Matter folder.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Rescan library</h3>
+            <p>NickelDBus asks Kobo's stock reader to import the new books.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="details" aria-labelledby="details-title">
+        <div>
+          <h2 id="details-title">Built for a real Kobo, not a replacement OS</h2>
+          <p>
+            Kobo plus Matter uses stock firmware, NickelMenu, and NickelDBus. It
+            does not install KOReader, replace Nickel, or ask you to change where
+            you read.
+          </p>
+        </div>
+        <ul>
+          <li>Manual and automatic sync modes</li>
+          <li>Visible NickelMenu actions for sync, status, Wi-Fi, and import</li>
+          <li>Optional Matter collection labeling after import</li>
+          <li>Recovery path documented for uninstall and token changes</li>
+        </ul>
+      </section>
+
+      <section class="download" aria-labelledby="download-title">
+        <div>
+          <h2 id="download-title">Try the current package</h2>
+          <p>
+            The release artifact is a Kobo updater package. Copy it to the
+            hidden <code>.kobo</code> folder, eject, and let the device reboot.
+          </p>
+        </div>
+        <div class="download-actions">
+          <a class="button-link" href="https://github.com/guglielmofonda/kobo-plus-matter/releases/latest">
+            Download latest
+          </a>
+          <a
+            class="secondary-link"
+            href="https://github.com/guglielmofonda/kobo-plus-matter/blob/main/docs/install.md"
+          >
+            Read install guide
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <form
+        class="signup-form compact"
+        action="https://formsubmit.co/gufo0125@gmail.com"
+        method="POST"
+      >
+        <input type="hidden" name="_subject" value="Kobo plus Matter update signup">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <label for="footer-email">Get release updates</label>
+        <div class="form-row">
+          <input
+            id="footer-email"
+            name="email"
+            type="email"
+            autocomplete="email"
+            placeholder="you@example.com"
+            required
+          >
+          <button type="submit">Sign up</button>
+        </div>
+      </form>
+      <p>
+        Open source utility for Kobo readers and Matter Pro users.
+        <span id="year"></span>
+      </p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+#!/bin/sh
+
+case "$1" in
+  stop)
+    if [ -f /mnt/onboard/.adds/matter/matter-daemon.pid ]; then
+      pid="$(cat /mnt/onboard/.adds/matter/matter-daemon.pid 2>/dev/null || true)"
+      if [ -n "$pid" ]; then
+        kill "$pid" 2>/dev/null || true
+      fi
+    fi
+    exit 0
+    ;;
+esac
+
+(
+  i=0
+  while [ "$i" -lt 60 ]; do
+    if [ -x /mnt/onboard/.adds/matter/run-daemon.sh ]; then
+      /mnt/onboard/.adds/matter/run-daemon.sh >/dev/null 2>&1
+      exit 0
+    fi
+    i=$((i + 1))
+    sleep 5
+  done
+) &
+
+exit 0
+

@@ -1,0 +1,8 @@
+Remove Kobo Shop footer row on new home screen:
+  - Enabled: yes
+  - PatchGroup: Home screen layout tweaks
+  - Description: Hides the bottom home-screen footer row where Kobo Shop and Kobo Plus promotion cards are shown.
+  - FindZlib: "#row1col2"
+  - ReplaceZlib:
+      Find:    "#row1col2 {\n  qproperty-visible: false;\n}"
+      Replace: "#row1col2 {\n  qproperty-visible: false;\n}\n#row3 {\n  qproperty-visible: false;\n}"

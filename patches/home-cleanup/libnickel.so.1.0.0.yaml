@@ -1,0 +1,62 @@
+Remove recommendations from home screen:
+  - Enabled: yes
+  - Description: Hides the top-right recommendation widget on the home screen.
+  - ReplaceBytes:
+      Base:           "HomePageView::configureTopRight(HomePageWidgets)"
+      Offset:         48
+      FindH:          58 B1
+      ReplaceInstNOP: true
+
+Hide bottom home row:
+  - Enabled: yes
+  - Description: Hides the lower home-screen row which contains Browse Kobo/Activity and SmartLink recommendation cards.
+  - ReplaceBytes:
+      Base:     "Ui_HomePageView::setupUi(QWidget*)"
+      Offset:   2266
+      FindH:    A0 68
+      ReplaceH: 60 6C
+  - ReplaceBytes:
+      Base:           "Ui_HomePageView::setupUi(QWidget*)"
+      Offset:         2268
+      FindInstBLX:    {SymPLT: "QBoxLayout::addWidget(QWidget*, int, QFlags<Qt::AlignmentFlag>)"}
+      ReplaceInstBLX: {SymPLT: "QWidget::hide()"}
+  - ReplaceBytes:
+      Base:           "Ui_HomePageView::setupUi(QWidget*)"
+      Offset:         2278
+      FindInstBLX:    {SymPLT: "QBoxLayout::setStretch(int, int)"}
+      ReplaceInstNOP: true
+
+Change Browse Kobo home screen link target - Activity:
+  - Enabled: yes
+  - Description: Changes the Browse Kobo home card to Activity behavior/text instead of Kobo Store behavior/text.
+  - ReplaceBytes:
+      Base:          "BrowseKoboWidget::tapped()"
+      Offset:        26
+      FindInstBW:    {SymPLTTail: "DiscoverNavMixin::storefront()"}
+      ReplaceInstBW: {SymPLTTail: "ReadingLifeNavMixin::chooseActivity()"}
+  - ReplaceBytes:
+      Base:          "BrowseKoboWidget::tapped()"
+      Offset:        36
+      FindInstBW:    {SymPLTTail: "StoreNavMixin::overDriveFeaturedLists()"}
+      ReplaceInstBW: {SymPLTTail: "ReadingLifeNavMixin::chooseActivity()"}
+  - ReplaceBytes:
+      Base:           "BrowseKoboWidget::BrowseKoboWidget(QWidget*)"
+      Offset:         206
+      FindInstBLX:    {SymPLT: "N3DeviceCharm::shopName()"}
+      ReplaceInstBLX: {SymPLT: "N3DeviceCharm::extrasName()"}
+  - ReplaceBytes:
+      Base:           "HomePageView::setOverDriveUser(OverDriveUser const&)"
+      Offset:         114
+      FindInstBLX:    {SymPLT: "GenericHomeWidget::setMetaText(QString)"}
+      ReplaceInstNOP: true
+
+Never show Kobo Plus, wishlist, and points SmartLinks:
+  - Enabled: yes
+  - Description: Removes Kobo Plus, wishlist, and points SmartLinks from the home-screen SmartLink rotation.
+  - BaseAddress: "ActivityManager::smartLinkGeneralMessage(Device const&)"
+  - ReplaceBytes: {Offset: 310, FindH: 02 23, CheckOnly: true}
+  - ReplaceBytes: {Offset: 320, FindInstBLX: {SymPLT: "QVector<SmartLinkType>::append(SmartLinkType const&)"}, ReplaceInstNOP: true}
+  - ReplaceBytes: {Offset: 284, FindH: 0E 23, CheckOnly: true}
+  - ReplaceBytes: {Offset: 294, FindInstBLX: {SymPLT: "QVector<SmartLinkType>::append(SmartLinkType const&)"}, ReplaceInstNOP: true}
+  - ReplaceBytes: {Offset: 1514, FindH: 11 23, CheckOnly: true}
+  - ReplaceBytes: {Offset: 1526, FindInstBLX: {SymPLT: "QVector<SmartLinkType>::append(SmartLinkType const&)"}, ReplaceInstNOP: true}

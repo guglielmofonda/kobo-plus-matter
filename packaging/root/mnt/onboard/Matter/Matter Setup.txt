@@ -1,0 +1,15 @@
+Matter sync is installed.
+
+To finish setup, connect this Kobo to your normal Wi-Fi network and add your
+Matter API token to:
+
+  .adds/matter/config.env
+
+Set:
+
+  MATTER_TOKEN=mat_your_token_here
+
+Then open NickelMenu and choose Matter Sync.
+
+Matter API tokens require a Matter Pro account.
+
