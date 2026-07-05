@@ -276,6 +276,8 @@ pre {
   margin: 0;
   padding: 22px;
   overflow-x: auto;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
   color: #e7f0e9;
   font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
   font-size: 13px;
