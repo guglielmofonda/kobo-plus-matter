@@ -6,3 +6,4 @@ dist/
 *.log
 config.env
 .vercel
+.DS_Store
